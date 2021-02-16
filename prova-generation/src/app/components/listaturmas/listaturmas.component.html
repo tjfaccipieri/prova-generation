@@ -1,20 +1,45 @@
 <main class="container-fluid vh-100 bg-light-gray d-flex flex-column justify-content-center align-itens-center">
   <h1 class="align-self-center">Cadastro de Turmas</h1>
-  <form [formGroup]="enviaTurma" (ngSubmit)="OnSubmit()" class="align-self-center d-flex flex-column w-75">
+  <form class="align-self-center d-flex flex-column w-75" 
+    [formGroup]="formularioDeTurma" (ngSubmit)="enviarDadosTurma()">
 
-    <label for="descricao">
-    Descrição
-    </label>
+  <div>
+    <label for="descricao">Descrição</label>
     <input class="form-control mb-2"type="text" placeholder="Descrição" formControlName="descricao">
+    <div *ngIf="!descricao.pristine && descricao.errors">
+      <small *ngIf="descricao.errors.required">Campo Obrigatório</small>
+      <small *ngIf="descricao.errors.minLenght">Mínimo de 3 caracteres</small>
+    </div>
+  </div>
 
-    <label for="tipo">
-    Tipo
-  </label>
+  <div>
+    <label for="tipo">Tipo</label>
     <input class="form-control mb-2"type="text" placeholder="Tipo" formControlName="tipo">
+    <div *ngIf="!tipo.pristine && tipo.errors">
+      <small *ngIf="tipo.errors.required">Campo Obrigatório</small>
+    </div>
+  </div>
 
-    <button type="submit" class="btn btn-outline-info w-75 align-self-center">Cadastrar</button>
+
+    <button type="submit" [disabled]="!formularioDeTurma.valid"
+    class="btn btn-outline-info w-75 align-self-center">Cadastrar</button>
 </form>
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
