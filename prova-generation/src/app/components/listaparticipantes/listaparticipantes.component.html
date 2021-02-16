@@ -37,284 +37,32 @@
 
   <ng-container matColumnDef="deletar">
     <th mat-header-cell *matHeaderCellDef>  </th>
-    <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-outline-danger">
+    <td mat-cell *matCellDef="let element"> <button type="button" class="btn btn-outline-danger" (click)= "modalService.open('modal-1')"> 
       Deletar
-    </button> </td>
+    </button> 
+  </td>
   </ng-container>
+
+  
+  
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<jw-modal id="modal-1">
+  <div class="container-fluid d-flex justify-content-center align-itens-center">
+  <h2 class="self-align-center">Tem certeza de que deseja deletar o usuário?</h2>
+</div>
+  <div class="container-fluid vh-75 d-flex justify-content-center align-itens-center">
+  <button type="button" class="btn btn-outline-info mr-5 align-self-end">
+    Deletar
+  </button>
+  <button type="button" class="btn btn-outline-danger ml-5 align-self-end" (click)= "modalService.close('modal-1')"> 
+    Cancelar
+  </button>
+</div> 
+
+</jw-modal>
+
 </main>
-
-
-<!-- <main class="container-fluid my-5 py-5 vh-75 d-flex flex-column justify-content-center align-itens-center">
-  <h1 class="align-self-center ">Lista de Participantes</h1>
-    <table id="participantsTable" class="table-striped table align-self-center w-75 ">
-    <thead class="thead">
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>E-mail</th>
-        <th>Observações</th>
-        <th>Turma</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-      <tr>
-        <td>01</td>
-        <td>Thiago</td>
-        <td>thiago.faccipieri@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr> 
-      <tr>
-        <td>02</td>
-        <td>Natalia</td>
-        <td>natalia.gambini@gmail.com</td>
-        <td>Sei lá, qlquer coisa aqui só pra ocupar espaço</td>
-        <td>Turma 01 - Laranja</td>
-        <td><button type="button" class="btn btn-outline-info">Editar</button></td>
-        <td><button type="button" class="btn btn-outline-danger">Deletar</button></td>
-      </tr>
-    </tbody>
-    </table>
-</main> -->

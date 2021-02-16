@@ -1,14 +1,35 @@
 <main class="container-fluid vh-100 bg-light-gray d-flex flex-column justify-content-center align-itens-center">
   <h1 class="align-self-center">Cadastrar Participante</h1>
-  <form action="" class="align-self-center d-flex flex-column w-75">
-      <span>Nome</span>
-      <input class="form-control mb-2"type="text" placeholder="Nome">
+  <form class="align-self-center d-flex flex-column w-75 needs-validation"  [formGroup]="formularioDeUsuario" (ngSubmit)="enviarDados()" >
+    <div>
+      <label for="nome">Nome</label>
+      <input class="form-control mb-2" type="text" placeholder="Nome" formControlName="nome">
+      <div *ngIf="!nome.pristine && nome.errors">
+        <small *ngIf="nome.errors.required">Campo obrigatório</small>
+        <small *ngIf="nome.errors.minLenght">Nome deve ter no mínimo 3 caracteres</small>
+      </div>
+    </div>
 
-      <span>E-mail</span>
-      <input class="form-control mb-2"type="text" placeholder="E-mail">
+    <div>
+      <label for="email">E-mail</label>
+      <input class="form-control mb-2" type="text" placeholder="E-Mail" formControlName="email">
+      <div *ngIf="!email.pristine && email.errors">
+        <small *ngIf="email.errors.required">Campo obrigatório</small>
+        <small class="alert-danger" *ngIf="email.errors.email">Digite um e-mail válido</small>
+      </div>
+    </div>
+    
 
-      <span>Observações</span>
-      <textarea class="form-control mb-2" placeholder="Observações" rows=4></textarea>
+    <div>    
+      <label for="observacoes">Observações</label>
+      <textarea class="form-control mb-2" placeholder="Observações" rows=4 formControlName="observacoes"></textarea>
+      <div *ngIf="!observacoes.pristine && observacoes.errors">
+        <small *ngIf="observacoes.errors.required">Campo obrigatório</small>
+      </div>
+    </div>
+
+
+
 
       <span>Turma</span>
       <select name="turmas" class="custom-select custom-select-lg mb-3 ">
@@ -17,6 +38,9 @@
         <option value="02">Turma 02 - Verde</option>
       </select>
 
-      <button type="button" class="btn btn-outline-info w-75 align-self-center">Cadastrar</button>
-  </form>
+
+
+      <button type="button" [disabled]="!formularioDeUsuario.valid"
+      class="btn btn-outline-info w-75 align-self-center">Cadastrar</button>
+    </form>
 </main>
