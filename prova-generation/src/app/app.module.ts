@@ -30,9 +30,11 @@ import  {MatSidenavModule} from '@angular/material/sidenav';
 import  {MatTableModule} from '@angular/material/table';
 import  {MatToolbarModule} from '@angular/material/toolbar';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 import appRoutes from './routerConfig';
 import {ReactiveFormsModule} from '@angular/forms'
+import {ModalModule} from './_modal'
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {ReactiveFormsModule} from '@angular/forms'
     CriaparticipantesComponent
   ],
   imports: [
+    ModalModule,
+    AlertModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

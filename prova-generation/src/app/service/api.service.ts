@@ -54,8 +54,15 @@ export class ApiService {
     return this.http.put(`${apiParticipantes}/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: 'id'): Observable<any> {
     return this.http.delete(`${apiParticipantes}/${id}`);
+  }
+
+  public deleteUser(id) {
+    let endPoints = `${apiParticipantes}/${id}`
+    this.http.delete(endPoints).subscribe(data => {
+      console.log(data);
+    });
   }
 
   findByTitle(title: any): Observable<Participantes[]> {
