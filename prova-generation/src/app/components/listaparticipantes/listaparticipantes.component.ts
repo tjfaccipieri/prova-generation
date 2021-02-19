@@ -10,6 +10,7 @@ import { map } from "rxjs/operators";
 
 
 
+
 @Component({
   selector: 'app-listaparticipantes',
   templateUrl: './listaparticipantes.component.html',
@@ -22,6 +23,7 @@ export class ListaparticipantesComponent implements OnInit {
   id: string;
   user: editarparticipante;
   userdel: number;
+  
 
   constructor(
     private _api: ApiService,
@@ -63,4 +65,7 @@ this._api.getAll().subscribe(res =>{
       alert('Usuário deletado com sucesso');
     })
   }
+  
+
+  
 }

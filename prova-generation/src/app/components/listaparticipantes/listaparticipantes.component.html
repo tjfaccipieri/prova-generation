@@ -38,9 +38,9 @@
   <ng-container matColumnDef="deletar">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td mat-cell *matCellDef="let element"> 
-      <!-- <button type="button" id="{{element.id}}" class="btn btn-outline-danger" 
-        (click)="modalService.open('modal-1')" > -->
-      <button type="button" class="btn btn-outline-danger" routerLink="/deleteparticipante/{{element.id}}"> 
+      <button type="button" id="{{element.id}}" class="btn btn-outline-danger" 
+        routerLink="/deleteparticipante/{{element.id}}">
+      <!-- <button type="button" id="{{element.id}}" class="btn btn-outline-danger" (click)="reply_click(element.id)">  -->
         Deletar
       </button> 
     </td>
