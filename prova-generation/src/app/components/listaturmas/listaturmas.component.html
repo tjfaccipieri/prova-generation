@@ -1,8 +1,7 @@
 <main class="container-fluid vh-100 bg-light-gray d-flex flex-column justify-content-center align-itens-center">
   <h1 class="align-self-center">Cadastro de Turmas</h1>
   <form class="align-self-center d-flex flex-column w-75" 
-    [formGroup]="formularioDeTurma" (ngSubmit)="enviarDadosTurma()">
-
+    [formGroup]="formularioDeTurma" >
   <div>
     <label for="descricao">Descrição</label>
     <input class="form-control mb-2"type="text" placeholder="Descrição" formControlName="descricao">
@@ -21,7 +20,7 @@
   </div>
 
 
-    <button type="submit" [disabled]="!formularioDeTurma.valid"
+    <button type="submit" [disabled]="!formularioDeTurma.valid" (click)="cadastraTurma()"
     class="btn btn-outline-info w-75 align-self-center">Cadastrar</button>
 </form>
 
