@@ -1,32 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { findIndex } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { editarparticipante, getOne, newParticipante, novoParticipante } from 'src/model/participantes';
 import { Turmas } from 'src/model/turmas';
-import { novoParticipante, newParticipante } from 'src/model/participantes';
 import { ApiService } from '../../service/api.service';
+import { Participantes } from 'src/model/participantes';
 
 
 @Component({
-  selector: 'app-criaparticipantes',
-  templateUrl: './criaparticipantes.component.html',
-  styleUrls: ['./criaparticipantes.component.css']
+  selector: 'app-editarparticipante',
+  templateUrl: './editarparticipante.component.html',
+  styleUrls: ['./editarparticipante.component.css']
 })
-export class CriaparticipantesComponent implements OnInit {
+export class EditarparticipanteComponent implements OnInit {
   turmas: Turmas[];
   isLoadingResults = true;
   formularioDeUsuario: FormGroup;
-  
-  
+  id: string;
+  user: editarparticipante;
 
   constructor(
     private _api: ApiService,
     private fb: FormBuilder,
-    private np: FormBuilder
+    private route: ActivatedRoute,
     ) { }
 
-
   ngOnInit() {
-    this.criarCadastroParticipante();
+/////////////////////Popular o form com o usuário correto///////////////////////
+this.id = this.route.snapshot.paramMap.get('id');
+this._api.getOne(this.id).subscribe(res => {
+  this.user = {
+    id: parseInt(this.id),
+    nome: res.nome,
+    email: res.email,
+    observacoes: res.observacoes
+  }
+});
+this.criarCadastroParticipante();
 
 /////////////////////Pegar todas as turmas para o select do form////////////////
     this._api.getAllTurmas().subscribe(res => {
@@ -39,21 +49,16 @@ export class CriaparticipantesComponent implements OnInit {
     });
 }
 
+
+
 /////////////////////////Enviar novo Aluno ao DB////////////////////////////////
-  enviarDados(){
+update(){
+  this._api.updateParticipante(this.id, this.user).subscribe(res=>{
+    alert('Usuário atualizado com sucesso');
 
-    const newParticipante: any  = this.formularioDeUsuario.value;
-
-    console.log(newParticipante);
-    
-    // alert('Participante criado com sucesso');
-
-    this._api.createParticipante(newParticipante).subscribe(data =>{
-      console.log(data);
-    })
-
-    this.formularioDeUsuario.reset();
   }
+    )
+}
 
 ///////////////////////////Regras de Validação do Form//////////////////////////
   criarCadastroParticipante(){
@@ -61,8 +66,7 @@ export class CriaparticipantesComponent implements OnInit {
       nome:['',Validators.compose([Validators.required,Validators.minLength(3)])],
       email:['',Validators.compose([Validators.email])],
       observacoes:['',Validators.compose([Validators.required,Validators.minLength(3)])],
-      // turma:['',Validators.required],
-      turma: []
+      turma:[''],
     });
   }
   get nome(){
@@ -74,9 +78,8 @@ export class CriaparticipantesComponent implements OnInit {
   get observacoes(){
     return this.formularioDeUsuario.get('observacoes');
   }
-  // get turma(){
-  //   return this.formularioDeUsuario.get('turma');
-  // }
-////////////////////////////////////////////////////////////////////////////////
+  get turma(){
+    return this.formularioDeUsuario.get('turma');
+  }
 
 }

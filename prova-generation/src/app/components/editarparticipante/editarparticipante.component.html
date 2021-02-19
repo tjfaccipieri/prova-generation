@@ -1,9 +1,9 @@
 <main class="container-fluid vh-100 bg-light-gray d-flex flex-column justify-content-center align-itens-center">
-  <h1 class="align-self-center">Cadastrar Participante</h1>
-  <form class="align-self-center d-flex flex-column w-75 needs-validation"  [formGroup]="formularioDeUsuario" (ngSubmit)="enviarDados()" >
+  <h1 class="align-self-center">Editar Participante</h1>
+  <form class="align-self-center d-flex flex-column w-75 needs-validation"  [formGroup]="formularioDeUsuario"  >
     <div>
       <label for="nome">Nome</label>
-      <input class="form-control mb-2" type="text" placeholder="Nome" formControlName="nome">
+      <input class="form-control mb-2" type="text" [(ngModel)]="user.nome" formControlName="nome">
       <div *ngIf="!nome.pristine && nome.errors">
         <small *ngIf="nome.errors.required">Campo obrigatório</small>
         <small *ngIf="nome.errors.minLenght">Nome deve ter no mínimo 3 caracteres</small>
@@ -12,7 +12,7 @@
 
     <div>
       <label for="email">E-mail</label>
-      <input class="form-control mb-2" type="text" placeholder="E-Mail" formControlName="email">
+      <input class="form-control mb-2" type="text" [(ngModel)]="user.email" formControlName="email">
       <div *ngIf="!email.pristine && email.errors">
         <small *ngIf="email.errors.required">Campo obrigatório</small>
         <small class="alert-danger" *ngIf="email.errors.email">Digite um e-mail válido</small>
@@ -22,7 +22,7 @@
 
     <div>    
       <label for="observacoes">Observações</label>
-      <textarea class="form-control mb-2" placeholder="Observações" rows=4 formControlName="observacoes"></textarea>
+      <textarea class="form-control mb-2" [(ngModel)]="user.observacoes" rows=4 formControlName="observacoes"></textarea>
       <div *ngIf="!observacoes.pristine && observacoes.errors">
         <small *ngIf="observacoes.errors.required">Campo obrigatório</small>
       </div>
@@ -32,17 +32,17 @@
 
     <div>
       <label for="turmas">Turma</label>
-      <select name="turmas" class="custom-select custom-select-lg mb-3"  >
-        <!-- formControlName="turma" -->
-        <option value="Escolha uma turma"  selected hidden>Selecione a turma</option>
-        <option *ngFor="let turma of turmas">Turma {{turma.id}} - {{turma.descricao}} - {{turma.tipo}}</option>
-        <!-- <option value="01">Turma 01 - Laranja</option>
-        <option value="02">Turma 02 - Verde</option> -->
+      <select name="turmas" class="custom-select custom-select-lg mb-3" (ng-model)="turmas" >
+        <option value="" disabled selected hidden>Selecione a turma</option>
+        <option *ngFor="let turma of turmas" value="turma.id">Turma {{turma.id}} - {{turma.descricao}} - {{turma.tipo}}</option>
+
       </select>
     </div>
 
 
       <button type="button" [disabled]="!formularioDeUsuario.valid"
-      class="btn btn-outline-info w-75 align-self-center" (click)="enviarDados()">Cadastrar</button>
+      class="btn btn-outline-success w-75 align-self-center" (click)="update()">Salvar</button>
     </form>
+
+    <!-- <button (click)="pegarId()">pegar id</button> -->
 </main>

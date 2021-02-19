@@ -34,7 +34,10 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 import appRoutes from './routerConfig';
 import {ReactiveFormsModule} from '@angular/forms'
-import {ModalModule} from './_modal'
+import {ModalModule} from './_modal';
+import { EditarparticipanteComponent } from './components/editarparticipante/editarparticipante.component';
+import { DeleteparticipanteComponent } from './components/deleteparticipante/deleteparticipante.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import {ModalModule} from './_modal'
     HomeComponent,
     ListaparticipantesComponent,
     ListaturmasComponent,
-    CriaparticipantesComponent
+    CriaparticipantesComponent,
+    EditarparticipanteComponent,
+    DeleteparticipanteComponent,
   ],
   imports: [
     ModalModule,
